@@ -22,6 +22,9 @@ const Index = ({ ssr }) => {
         </li>
       ))}
     </ul>
+    <Link href="/page2" >
+      <a>前往第二頁</a>
+    </Link>
     <button onClick={()=>setList([])}>change</button>
   </div>
 }

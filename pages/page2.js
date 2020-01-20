@@ -4,23 +4,28 @@ import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 
 const Index = ({ ssr }) => {
-  const [list,setList] = useState(ssr.list)
+  const [type,setType] = useState(0)
   return <div>
     <Head>
-        <title>My page title</title>
+        <title>第二頁</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="stylesheet" type="text/css" href="/mycss.css" />
+        <link rel="stylesheet" type="text/css" href="/mycss2.css" />
       </Head>
-    <h1>Batman TV Shows</h1>
-    <ul>
-      {list.map(show => (
-        <li key={show.id}>
-          <Link href="/p/[id]" as={`/p/${show.id}`}>
-            <a>{show.name}</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
-    <button onClick={()=>setList([])}>change</button>
+    <h1>你來到第二頁了</h1>
+    <Link href="/" >
+      <a>回上一頁</a>
+    </Link>
+    <button onClick={()=>setType(type+1)}>change</button>
+    {
+      type%3 === 0 ? <div>切至1</div>:''
+    }
+    {
+      type%3 === 1 ? <div>切至2</div>:''
+    }
+    {
+      type%3 === 2 ? <div>切至3</div>:''
+    }
   </div>
 }
 
